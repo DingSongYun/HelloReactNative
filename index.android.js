@@ -3,12 +3,12 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
 
@@ -17,7 +17,7 @@ export default class HelloReact extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          WTF Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
@@ -50,4 +50,71 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('HelloReact', () => HelloReact);
+class Bananas extends Component {
+  render () {
+    let pic = {
+      uri : 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    };
+    return (
+      <Image source={pic} style={{width: 193, height:110}} />
+    );
+  }
+}
+
+class Greeting extends Component {
+  render () {
+    return (
+    <Text> 
+      Hello {this.props.name}!
+    </Text>
+    );
+  }
+}
+
+class LotsOfGreetings extends Component {
+  render() {
+    return (
+      <View style={{alignItems: 'center'}}>
+        <Greeting name='Rexxar'/>
+        <Greeting name='Jaina'/>
+        <Greeting name='Valeera'/>
+      </View>
+    );
+  }
+}
+
+class Blink extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = { showText: true };
+
+    setInterval(() => {
+      this.setState({ showText: !this.state.showText });
+    }, 500);
+  }
+
+  render () {
+    let display = this.state.showText ? this.props.text : ' ';
+    return (
+      <Text>
+        {display}
+      </Text>
+    );
+  }
+}
+
+class BlinkApp extends Component {
+  render () {
+    return (
+      <View>
+        <Blink text = 'I love to blink'/>
+        <Blink text = 'Yes blinking is so great'/>
+        <Blink text = 'Why did thery ever take this out of HTML'/>
+        <Blink text = 'Look at me look at me look an me'/>
+      </View>
+    );
+  }
+}
+
+AppRegistry.registerComponent('HelloReact', () => BlinkApp);
