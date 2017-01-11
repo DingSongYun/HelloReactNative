@@ -3,6 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+import RCTZhiHuDaily from 'ZhihuMain'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -117,4 +118,4 @@ class BlinkApp extends Component {
   }
 }
 
-AppRegistry.registerComponent('HelloReact', () => BlinkApp);
+AppRegistry.registerComponent('HelloReact', () => RCTZhiHuDaily);
